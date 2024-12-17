@@ -4,7 +4,7 @@ import { TripCardComponent } from '../trip-card/trip-card.component';
 import { TripDataService } from '../services/trip-data.service';
 import { Trip } from '../models/trip';
 import { Router } from '@angular/router';
-
+import { AuthenticationService } from '../services/authentication.service'; // Import AuthenticationService
 
 @Component({
   selector: 'app-trip-listing',
@@ -20,9 +20,15 @@ export class TripListingComponent implements OnInit {
 
   constructor(
     private tripDataService: TripDataService, 
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService // Inject AuthenticationService
   ) {
     console.log('trip-listing constructor');
+  }
+
+  // Method to check if the user is logged in
+  public isLoggedIn(): boolean {
+    return this.authenticationService.isLoggedIn();
   }
 
   public addTrip(): void {

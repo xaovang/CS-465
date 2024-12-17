@@ -11,6 +11,13 @@
         {{ trip.length }} only {{ trip.perPerson | currency:'USD':'symbol' }} per person
       </p>
       <p class="card-text" [innerHTML]="trip.description"></p>
+  
+      <!-- Conditional Logic for Edit Button -->
+      <div *ngIf="isLoggedIn()">
+        <button (click)="editTrip(trip)" class="btn btn-primary">
+          Edit
+        </button>
+      </div>
     </div>
   </div>
   
